@@ -34,6 +34,7 @@ int runSimulation(int A[], int n, int k) {
 		n = n - 1;
 		while (A[r] == 0)
 			r = (r + 1) % SIZE;
+		printCake(A, 10);
 	}
 	return A[r];
 }
@@ -41,6 +42,7 @@ int runSimulation(int A[], int n, int k) {
 //문제 시작
 int candle(int A[], int n, int k) {
 	buildList(A, n);
+	printCake(A, n);
 	return runSimulation(A, n, k);
 }
 
