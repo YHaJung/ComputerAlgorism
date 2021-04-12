@@ -55,6 +55,23 @@ int removeMin(HeapType* h) {
 	return key;
 }
 
+
+//정렬
+void heapSort(HeapType* h, int list[]) {
+	HeapType heap;
+	init(&heap);
+	//원래 차례로 insertItem 사용하여, list로 불러온 걸 heap으로 만들어야 함.
+	//여기선 앞에서 삽입으로 만들어둔 힙이 있으므로 그냥 사용
+	for (int i = 1; i <= h->heap_size; i++) {
+		heap.heap[i] = h->heap[i];
+		heap.heap_size++;
+	}
+	for (int i = 1; i <= h->heap_size; i++) {
+		list[i] = removeMin(&heap);
+	}
+}
+
+
 //출력
 void printHeap(HeapType* h) {
 	for (int i = 1; i <= h->heap_size; i++) {
@@ -62,9 +79,15 @@ void printHeap(HeapType* h) {
 	}
 	printf("\n");
 }
+void printArray(int list[], int n) {
+	for (int i = 1; i <= n; i++)
+		printf("[%d] ", list[i]);
+	printf("\n");
+}
 
 void main() {
 	HeapType heap;
+	int list[MAX_ELEMENT] = { 0 };
 	init(&heap);
 
 	//삽입
@@ -79,7 +102,12 @@ void main() {
 
 	printHeap(&heap);
 
+	//정렬
+	heapSort(&heap, list);
+	printArray(list, heap.heap_size);
+
 	//삭제
+	printHeap(&heap);
 	printf("deleted key : %d\n", removeMin(&heap));
 	printHeap(&heap);
 }
