@@ -71,6 +71,16 @@ void heapSort(HeapType* h, int list[]) {
 	}
 }
 
+//제자리 정렬
+void inPlaceHeapSort(HeapType* h) {
+	int size = h->heap_size;
+	int key;
+	for (int i = 0; i < size; i++) {
+		key = removeMin(h);
+		h->heap[h->heap_size + 1] = key;
+	}
+}
+
 
 //출력
 void printHeap(HeapType* h) {
@@ -110,4 +120,16 @@ void main() {
 	printHeap(&heap);
 	printf("deleted key : %d\n", removeMin(&heap));
 	printHeap(&heap);
+
+	//제자리 힙 정렬
+	HeapType heap2;
+	int list2[MAX_ELEMENT] = { 0 };
+	init(&heap2);
+	for (int i = 0; i < 15; i++)
+		insertItem(&heap2, rand() & 100);
+	printHeap(&heap2);
+	getch();
+	inPlaceHeapSort(&heap2);
+	for (int i = 1; heap2.heap[i] > 0; i++)
+		printf("[%d] ", heap2.heap[i]);
 }
