@@ -5,20 +5,22 @@
 #define SIZE 15
 #define SWAP(x,y,t) ((t)=(x), (x)=(y), (y=t))
 
+/*
 void swap(int A[], int a, int b) {
 	int temp = A[a];
 	A[a] = A[b];
 	A[b] = temp;
 }
+*/
 
 void inplaceSelectionSort(int A[], int n) {
-	int min;
+	int min, temp;
 	for (int i = 0; i < n - 1; i++) {
 		min = i;
-		for (int j = i; j < n; j++) {
+		for (int j = i+1; j < n; j++) {
 			if (A[min] > A[j]) min = j;
 		}
-		swap(A, i, min);
+		SWAP(A[i], A[min], temp);
 	}
 }
 
