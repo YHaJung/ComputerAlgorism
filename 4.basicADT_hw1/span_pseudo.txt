@@ -1,0 +1,14 @@
+Alg peroid(X, n)
+input array X of n
+	  integer n
+output array S
+
+for i<-0 to n-1
+	j<- i
+	count <- 0
+	while(j>=0 & X[j] <= X[i])
+		count <- count +1
+		j <- j-1
+	S[i] <- count
+
+return S
