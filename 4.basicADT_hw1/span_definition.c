@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void peroid(int X[], int S[], int n) {
+#define SIZE 6
+
+void spans(int X[], int S[], int n) {
+	int s;
 	for (int i = 0; i < n; i++) {
-		int s = 1;
+		s = 1;
 		while (s <= i && X[i - s] <= X[i])
-			s = s + 1;
+			s++;
 		S[i] = s;
 	}
-	return;
 }
 
 void printArray(int X[], int n) {
@@ -18,8 +20,8 @@ void printArray(int X[], int n) {
 }
 
 void main() {
-	int X[6] = { 60, 30 , 40, 20, 50, 30 };
-	int S[6];
-	peroid(X, S, 6);
+	int X[SIZE] = { 60, 30 , 40, 20, 50, 30 };
+	int S[SIZE] = { 0 };
+	spans(X, S, SIZE);
 	printArray(S, 6);
 }

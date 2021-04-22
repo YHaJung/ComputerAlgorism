@@ -1,0 +1,16 @@
+Alg spans(X, S, n)
+input array X of n
+	  integer n
+output array S
+
+A <- empty stack
+for i<-0 to n-1
+	while( ! A.isEmpthy() && X[i] > X[A.top()]){
+		A.pop()
+	}
+	S[i] <- i - A.top()      {{A가 empty이면 top = -1}}
+	A.push(i);
+
+while( ! A.isEmpthy())	{{잔여 처리}}
+	A.pop()
+return
