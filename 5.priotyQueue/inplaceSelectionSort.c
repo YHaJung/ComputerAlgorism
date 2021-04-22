@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <Windows.h>
 
 #define SIZE 15
 #define SWAP(x,y,t) ((t)=(x), (x)=(y), (y=t))
@@ -25,8 +26,10 @@ void inplaceSelectionSort(int A[], int n) {
 }
 
 void printArray(int A[], int n) {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) {
 		printf("%d ", A[i]);
+		Sleep(500);
+	}
 	printf("\n");	
 }
 
