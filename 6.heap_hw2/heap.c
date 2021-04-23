@@ -71,17 +71,6 @@ void heapSort(HeapType* h, int list[]) {
 	}
 }
 
-//제자리 정렬
-void inPlaceHeapSort(HeapType* h) {
-	int size = h->heap_size;
-	int key;
-	for (int i = 0; i < size; i++) {
-		key = removeMin(h);
-		h->heap[h->heap_size + 1] = key;
-	}
-}
-
-
 //출력
 void printHeap(HeapType* h) {
 	for (int i = 1; i <= h->heap_size; i++) {
@@ -133,3 +122,5 @@ void main() {
 	for (int i = 1; heap2.heap[i] > 0; i++)
 		printf("[%d] ", heap2.heap[i]);
 }
+
+//df6aze2589
