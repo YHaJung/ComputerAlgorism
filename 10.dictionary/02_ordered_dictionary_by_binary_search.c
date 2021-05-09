@@ -64,6 +64,23 @@ void insertion_sort(DictType* d) {
 	}
 }
 
+int rFindElement(DictType* d, int key, int l, int r) {
+	int mid = (l + r) / 2;
+
+	if (l > r)
+		return -1;
+
+	if (d->dict[mid].key == key) {
+		return mid;
+	}
+	else if (d->dict[mid].key > key) {
+		return rFindElement(d, key, l, mid - 1);
+	}
+	else {
+		return rFindElement(d, key, mid + 1, r);
+	}
+}
+
 
 void main() {
 	DictType d;
@@ -72,12 +89,26 @@ void main() {
 	srand(time(NULL));
 	makeDict(&d);
 	printDict(&d);
-
 	getchar();
-	printf("\n");
 
+	printf("\n");
 	insertion_sort(&d);
 	printDict(&d);
-
 	getchar();
+
+	int key;
+	printf("\n검색할 키값을 입력: ");
+	scanf_s("%d", &key);
+	int index = rFindElement(&d, key, 0, d.size - 1);
+	if (index == -1)
+		printf("\n검색에 실패하였습니다.\n");
+	else {
+		printf("\n위치 %d에서 키 : %d, 값 : ", index + 1, key);
+		for (int i = 0; i < 5; i++) {
+			printf("%c", d.dict[index].value[i]);
+		}
+		printf("이 검색되었음\n");
+	}
+		
+
 }
