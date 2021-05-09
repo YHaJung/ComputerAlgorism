@@ -52,7 +52,7 @@ void printDict(DictType* d) {
 	}
 }
 
-//recursive way
+//sort dictionary
 void insertion_sort(DictType* d) {
 	int i, j;
 	element item;
@@ -65,7 +65,7 @@ void insertion_sort(DictType* d) {
 	}
 }
 
-
+//recursive way
 int rFindElement(DictType* d, int key, int l, int r) {
 	int mid = (l + r) / 2;
 
@@ -101,6 +101,30 @@ int FindElement(DictType* d, int key, int l, int r) {
 	return -1;
 }
 
+
+//delete
+element removeElement(DictType* d, int key) {
+	int index = FindElement(d, key, 0, d->size - 1);
+	if (index == -1) {
+		printf("삭제할 요소가 없습니다.\n");
+		return;
+	}
+	else {
+		//mycode
+		/*
+		d->dict[index] = d->dict[d->size - 1];
+		d->size--;
+		insertion_sort(d);
+		*/
+		//professor code
+		element item = d->dict[index];
+		for (int i = index; i < d->size - 1; i++)
+			d->dict[i] = d->dict[i + 1];
+		d->size--;
+		return item;
+	}
+}
+
 void main() {
 	DictType d;
 	init(&d);
@@ -118,8 +142,8 @@ void main() {
 	int key;
 	printf("\n검색할 키값을 입력: ");
 	scanf_s("%d", &key);
-	//int index = rFindElement(&d, key, 0, d.size - 1);
-	int index = FindElement(&d, key, 0, d.size - 1);
+	int index = rFindElement(&d, key, 0, d.size - 1);
+	//int index = FindElement(&d, key, 0, d.size - 1);
 	if (index == -1)
 		printf("\n검색에 실패하였습니다.\n");
 	else {
@@ -129,6 +153,10 @@ void main() {
 		}
 		printf("이 검색되었음\n");
 	}
-		
+	getchar();
 
+	printf("\n삭제할 키값을 입력 : ");
+	scanf_s("%d", &key);
+	removeElement(&d, key);
+	printDict(&d);
 }
