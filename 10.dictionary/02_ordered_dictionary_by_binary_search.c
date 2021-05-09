@@ -52,6 +52,7 @@ void printDict(DictType* d) {
 	}
 }
 
+//recursive way
 void insertion_sort(DictType* d) {
 	int i, j;
 	element item;
@@ -64,16 +65,17 @@ void insertion_sort(DictType* d) {
 	}
 }
 
+
 int rFindElement(DictType* d, int key, int l, int r) {
 	int mid = (l + r) / 2;
 
 	if (l > r)
 		return -1;
 
-	if (d->dict[mid].key == key) {
+	if (key == d->dict[mid].key) {
 		return mid;
 	}
-	else if (d->dict[mid].key > key) {
+	else if (key < d->dict[mid].key) {
 		return rFindElement(d, key, l, mid - 1);
 	}
 	else {
@@ -81,6 +83,23 @@ int rFindElement(DictType* d, int key, int l, int r) {
 	}
 }
 
+//repeatation way
+int FindElement(DictType* d, int key, int l, int r) {
+	int mid;
+	while (l < r) {
+		mid = (l + r) / 2;
+		if (key == d->dict[mid].key) {
+			return mid;
+		}
+		else if (key < d->dict[mid].key) {
+			r = mid - 1;
+		}
+		else {
+			l = mid + 1;
+		}
+	}
+	return -1;
+}
 
 void main() {
 	DictType d;
@@ -99,7 +118,8 @@ void main() {
 	int key;
 	printf("\n검색할 키값을 입력: ");
 	scanf_s("%d", &key);
-	int index = rFindElement(&d, key, 0, d.size - 1);
+	//int index = rFindElement(&d, key, 0, d.size - 1);
+	int index = FindElement(&d, key, 0, d.size - 1);
 	if (index == -1)
 		printf("\n검색에 실패하였습니다.\n");
 	else {
