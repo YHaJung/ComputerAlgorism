@@ -9,10 +9,10 @@ c code and pseudo code
 3) prefix averages.c  
 
 #### 2. recursive  
-1) hanoi top
+1) hanoi top  
   
-#### 3. basic data structure
-traverse 2-dimensional array
+#### 3. basic data structure  
+traverse 2-dimensional array  
 
 #### 4. basic ADT  
 1) list  
@@ -23,8 +23,11 @@ basic function :init, add addFirst, addLast, remove, removeFirst, removeLast, ge
 3) cake candle - array ver1, array ver2, circle list ver  
 blow out a candle skipping k candles -> find last candle  
 
-
-
+#### 5. prioty queue  
+1) insertion sort - inplace  
+2) selection sort - inplace  
+3) bubble sort  
+4) shell sort  
 
 #### 6. heap  
 1) heap  
@@ -34,7 +37,10 @@ basic function : init, upheap, downheap, insert item, remove min, sort, print
 heap basic function : structure, init, upheap, insert item, print  
 stack basic function : structure, init, isempty, push, pop, print  
 main function : find last node, binary expansion  
-(+3) heap sort improve - not finish yet
+(+3) heap sort improve - not finish yet  
+
+#### 7. merge sort
+#### 8. quick sort
 
 #### 10. dictionary  
 1) basic dictionary - 01_make_dictionary.c
